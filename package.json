@@ -1,0 +1,7 @@
+{
+  "devDependencies": {
+    "@linthtml/linthtml": "^0.9.3",
+    "stylelint": "^14.15.0",
+    "stylelint-config-standard": "^29.0.0"
+  }
+}

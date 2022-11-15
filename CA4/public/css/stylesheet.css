@@ -18,7 +18,42 @@ body{
 
 .dropdown-menu{
   background-color: #fee9ea;
+  
 
+}
+.main-text{
+  
+  color: #CC7178;
+}
+.vert-title{
+  color: #89023E;
+  font-weight: bold;
+  margin: 0;
+  position: relative;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  transform: rotate(-90deg);
+}
+
+.about-titles{
+  color: #89023E;
+  font-weight: bold;
+  text-align: center;
+  
+}
+.page-titles{
+  color: #89023E;
+  font-weight: bolder;
+  text-align: center;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.about-sections{
+  padding-top:5% ;
 }
 
 * {
