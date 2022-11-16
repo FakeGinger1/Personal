@@ -9,7 +9,35 @@ body{
   font-size: larger;
   color: #89023E;
 }
+a{
+  color: #BE4B55;
+  text-decoration: none;
+}
+
+a:visited{
+  color: #BE4B55;
+}
+a:hover{
+  color: #CC7178;
+}
+a:active{
+  color: #BE4B55;
+}
+
 .nav-link{
+  color: #89023E;
+}
+.nav-link:visited{
+  background-color: #CC7178;
+  color: #89023E;
+}
+
+.nav-link:hover{
+  background-color: #CC7178;
+  color: #89023E;
+}
+.nav-link:active{
+  background-color: #CC7178;
   color: #89023E;
 }
 .dropdown-toggle{
@@ -20,12 +48,13 @@ body{
   background-color: #fee9ea;
 }
 .main-text{
-  
   color: #CC7178;
+  padding-bottom: 3%;
 }
 .vert-title{
   color: #89023E;
   font-weight: bold;
+  font-size: 200%;
   margin: 0;
   position: relative;
   top: 50%;
@@ -38,10 +67,13 @@ body{
   color: #89023E;
   font-weight: bold;
   text-align: center;
+  padding-bottom: 3%;
+  font-size: 200%;
   
 }
 .page-titles{
   color: #89023E;
+  font-size: 500%;
   font-weight: bolder;
   text-align: center;
   position: relative;
@@ -50,37 +82,66 @@ body{
   transform: translate(-50%, -50%);
 }
 
-
 .about-sections{
   padding-top:5% ;
 }
 
-* {
-    box-sizing: border-box;
-  }
-  
-  body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  
-  /* Style the side navigation */
-  .sidenav {
-    
+.sidenav{
+  background-color: #CC7178;
+  height: 700px;
+}
+
+
+.inbox__people{
+  color: #FFD9DA;
+  padding-top: 5%;
+  text-align: left;
+}
+
+.chat-header{
+  color: #89023E;
+  background-color: #D4878D;
+  text-align: left;
+}
+.chat-users{
+  text-align: left;
+  color: #89023E;
+}
+
+.message_form{
+  position: absolute; 
+  bottom: 0;
+  padding-bottom: 3%;
+  padding-left: 3%;
   }
 
-  /*make the active user text inherit style from container*/
+hr{
+  border-width: 5px;
+  color: #CC7178;
+}
 
-  .inbox__people{
-      color: white;
-      padding: 16px;
-  }
-  
+.web-banner{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+.summary{
+  color: #CC7178;
+  padding-top: 5%;
+}
 
-  
-  
-  /* Style the content */
-  .content {
-    margin-left: 200px;
-    padding-left: 20px;
-  }
+.subtitles{
+  color: #BE4B55;
+}
+.action-images{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+
+}
+.pic-titles{
+  color: #89023E;
+  opacity: 60%;
+}
