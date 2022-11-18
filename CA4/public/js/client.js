@@ -42,19 +42,58 @@ const addToUsersBox = function (userName) {
     inboxPeople.innerHTML += userBox;
 };
 
+function userjoins(user) {
+    const time = new Date();
+    const formattedTime = time.toLocaleString("en-US", { hour: "numeric", minute: "numeric" });
+
+    const receivedMsg = `
+    <div class="incoming__message">
+      <div class="received__message">
+        <p>${user} has joined the chat!</p>
+        <div class="message__info">
+          <span class="time_date">${formattedTime}</span>
+        </div>
+      </div>
+    </div>`;
+
+    messageBox.innerHTML += receivedMsg;
+
+}
+
+function useleaves(userName) {
+    const time = new Date();
+    const formattedTime = time.toLocaleString("en-US", { hour: "numeric", minute: "numeric" });
+
+    const receivedMsg = `
+    <div class="incoming__message">
+      <div class="received__message">
+        <p>${userName} has left the chat!</p>
+        <div class="message__info">
+          <span class="time_date">${formattedTime}</span>
+        </div>
+      </div>
+    </div>`;
+
+    messageBox.innerHTML += receivedMsg;
+
+}
+
 //call 
 newUserConnected();
 
 //when a new user event is detected
 socket.on("new user", function (data) {
   data.map(function (user) {
+          return userjoins(user)
           return addToUsersBox(user);
       });
 });
 
 //when a user leaves
 socket.on("user disconnected", function (userName) {
+  return useleaves(userName)
   document.querySelector(`.${userName}-userlist`).remove();
+ ;
   
 });
 
@@ -109,4 +148,5 @@ messageForm.addEventListener("submit", (e) => {
 socket.on("chat message", function (data) {
   addNewMessage({ user: data.nick, message: data.message });
 });
+
 

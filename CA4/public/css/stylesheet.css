@@ -145,3 +145,9 @@ hr{
   color: #89023E;
   opacity: 60%;
 }
+
+.icon{
+  display: relative;
+  float:right;
+  
+}
