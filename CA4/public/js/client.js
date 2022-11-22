@@ -55,7 +55,6 @@ function userjoins(user) {
         </div>
       </div>
     </div>`;
-
     messageBox.innerHTML += receivedMsg;
 
 }
@@ -98,9 +97,21 @@ socket.on("user disconnected", function (userName) {
 });
 
 
+
 const inputField = document.querySelector(".message_form__input");
 const messageForm = document.querySelector(".message_form");
 const messageBox = document.querySelector(".messages__history");
+
+inputField.addEventListener('keypress', function(){
+  if(inputField.value.length > 0){
+    socket.emit('typing', inputField.value);
+  }
+});
+
+socket.on('typing', function(username){
+    messageBox.innerHTML += '<p><em>'+username+ 'is typing...</em></p>';
+});
+
 
 const addNewMessage = ({ user, message }) => {
   const time = new Date();

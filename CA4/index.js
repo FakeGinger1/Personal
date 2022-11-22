@@ -38,9 +38,12 @@ io.on("connection", function (socket) {
     socket.on("chat message", function (data) {
       io.emit("chat message", data);
   });
-  socket.on('typing', function(data){
-      socket.broadcast.emit('typing', data);
-    });
+  
+    // Handle typing event
+   socket.on('typing', function(data){
+    socket.broadcast.emit('typing', data);
+ });
+  
   
 
 });

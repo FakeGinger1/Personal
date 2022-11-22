@@ -51,18 +51,28 @@ a:active{
   color: #CC7178;
   padding-bottom: 3%;
 }
+
 .vert-title{
   color: #89023E;
   font-weight: bold;
   font-size: 200%;
-  margin: 0;
-  position: relative;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  transform: rotate(-90deg);
+  width: 100px;
+  position:relative;
 }
 
+@media all and (max-width: 767px){
+  .vert-title{
+    width:100%;
+    height:100px;
+  }
+}
+
+@media all and (min-width:767px){
+  .vert-title{
+    writing-mode: vertical-rl;
+    transform: scale(-1);
+  }
+}
 .about-titles{
   color: #89023E;
   font-weight: bold;
@@ -146,8 +156,10 @@ hr{
   opacity: 60%;
 }
 
-.icon{
-  display: relative;
-  float:right;
-  
+.fa-ellipsis-v{
+  display: block;
+  align-items: right;
+}
+.about-banner{
+  padding: 10%;
 }
