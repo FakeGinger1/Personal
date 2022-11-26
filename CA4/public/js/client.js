@@ -1,4 +1,4 @@
-//required for front end communication between client and server
+
 
 const socket = io();
 
@@ -10,35 +10,32 @@ let id;
 const newUserConnected = function (data) {
     
 
-    //give the user a random unique id
+    
     id = Math.floor(Math.random() * 1000000);
     userName = 'user-' +id;
     //console.log(typeof(userName));   
     
 
-    //emit an event with the user id
+    
     socket.emit("new user", userName);
-    //call
+    
     addToUsersBox(userName);
 };
 
 const addToUsersBox = function (userName) {
-    //This if statement checks whether an element of the user-userlist
-    //exists and then inverts the result of the expression in the condition
-    //to true, while also casting from an object to boolean
+    
     if (!!document.querySelector(`.${userName}-userlist`)) {
         return;
     
     }
     
-    //setup the divs for displaying the connected users
-    //id is set to a string including the username
+    
     const userBox = `
     <div class="chat_id ${userName}-userlist">
-      <h5>${userName}</h5>
+      <h5><i class="fa-solid fa-user"></i> ${userName}</h5>
     </div>
   `;
-    //set the inboxPeople div with the value of userbox
+    
     inboxPeople.innerHTML += userBox;
 };
 
@@ -49,12 +46,13 @@ function userjoins(user) {
     const receivedMsg = `
     <div class="incoming__message">
       <div class="received__message">
-        <p>${user} has joined the chat!</p>
+        <p><i class="fa-solid fa-user-plus"></i> ${user} has joined the chat!</p>
         <div class="message__info">
           <span class="time_date">${formattedTime}</span>
         </div>
       </div>
     </div>`;
+
     messageBox.innerHTML += receivedMsg;
 
 }
@@ -66,7 +64,7 @@ function useleaves(userName) {
     const receivedMsg = `
     <div class="incoming__message">
       <div class="received__message">
-        <p>${userName} has left the chat!</p>
+        <p><i class="fa-solid fa-user-minus"></i> ${userName} has left the chat!</p>
         <div class="message__info">
           <span class="time_date">${formattedTime}</span>
         </div>
@@ -77,10 +75,10 @@ function useleaves(userName) {
 
 }
 
-//call 
+
 newUserConnected();
 
-//when a new user event is detected
+
 socket.on("new user", function (data) {
   data.map(function (user) {
           return userjoins(user)
@@ -88,7 +86,7 @@ socket.on("new user", function (data) {
       });
 });
 
-//when a user leaves
+
 socket.on("user disconnected", function (userName) {
   return useleaves(userName)
   document.querySelector(`.${userName}-userlist`).remove();
@@ -97,21 +95,9 @@ socket.on("user disconnected", function (userName) {
 });
 
 
-
 const inputField = document.querySelector(".message_form__input");
 const messageForm = document.querySelector(".message_form");
 const messageBox = document.querySelector(".messages__history");
-
-inputField.addEventListener('keypress', function(){
-  if(inputField.value.length > 0){
-    socket.emit('typing', inputField.value);
-  }
-});
-
-socket.on('typing', function(username){
-    messageBox.innerHTML += '<p><em>'+username+ 'is typing...</em></p>';
-});
-
 
 const addNewMessage = ({ user, message }) => {
   const time = new Date();
@@ -138,7 +124,7 @@ const addNewMessage = ({ user, message }) => {
     </div>
   </div>`;
 
-  //is the message sent or received
+  
   messageBox.innerHTML += user === userName ? myMsg : receivedMsg;
 };
 

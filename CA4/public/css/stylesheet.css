@@ -60,6 +60,7 @@ a:active{
   position:relative;
 }
 
+
 @media all and (max-width: 767px){
   .vert-title{
     width:100%;
@@ -111,6 +112,8 @@ a:active{
 .chat-header{
   color: #89023E;
   background-color: #D4878D;
+  padding-top: 1%;
+  padding-bottom: 1%;
   text-align: left;
 }
 .chat-users{
@@ -156,10 +159,18 @@ hr{
   opacity: 60%;
 }
 
-.fa-ellipsis-v{
-  display: block;
-  align-items: right;
-}
+
 .about-banner{
   padding: 10%;
+}
+li{
+  color: #CC7178;
+}
+.message_form__input{
+  border-radius: 12px;
+  background-color: #FFD9DA;
+}
+.message_form__button{
+  border-radius: 12px;
+  background-color: #CC7178;
 }
