@@ -191,3 +191,7 @@ li{
   max-height: 60%;
   overflow: auto;
 }
+/*couldnt get the chat messages box to scroll down whenever a new message appears in the chat message history*/
+.chat-box{
+  overflow: scroll;
+}

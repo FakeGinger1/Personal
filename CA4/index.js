@@ -35,7 +35,7 @@ io.on("connection", function (socket) {
     socket.on("chat message", function (data) {
       io.emit("chat message", data);
   });
-
+// ([1]Mateusz Piguła, 2020) emits a typing event to everyone but the user who is typing
   socket.on("typing", function (data) {
       socket.broadcast.emit("typing", data);
   });
