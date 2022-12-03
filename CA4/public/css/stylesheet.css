@@ -74,6 +74,19 @@ a:active{
     transform: scale(-1);
   }
 }
+
+@media (orientation: landscape) and (max-width: 767px) {
+  .vert-title{
+    writing-mode: vertical-rl;
+    transform: scale(-1);
+    top: 50%;
+    right: 50%;
+  }
+}
+@media all and (max-width: 767px){
+  .hidden-icon{display: none;}
+}
+
 .about-titles{
   color: #89023E;
   font-weight: bold;
@@ -173,4 +186,8 @@ li{
 .message_form__button{
   border-radius: 12px;
   background-color: #CC7178;
+}
+.content{
+  max-height: 60%;
+  overflow: auto;
 }

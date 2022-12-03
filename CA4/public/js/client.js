@@ -40,6 +40,10 @@ const addToUsersBox = function (userName) {
 };
 
 function userjoins(user) {
+  if (!!document.querySelector(`.${user}-userlist`)) {
+        return;
+    
+    }
     const time = new Date();
     const formattedTime = time.toLocaleString("en-US", { hour: "numeric", minute: "numeric" });
 
@@ -73,6 +77,8 @@ function useleaves(userName) {
 
     messageBox.innerHTML += receivedMsg;
 
+    window.scrollTo(0, document.content.scrollHeight);
+
 }
 
 
@@ -81,14 +87,14 @@ newUserConnected();
 
 socket.on("new user", function (data) {
   data.map(function (user) {
-          return userjoins(user)
+          userjoins(user)
           return addToUsersBox(user);
       });
 });
 
 
 socket.on("user disconnected", function (userName) {
-  return useleaves(userName)
+  useleaves(userName)
   document.querySelector(`.${userName}-userlist`).remove();
  ;
   
@@ -98,6 +104,7 @@ socket.on("user disconnected", function (userName) {
 const inputField = document.querySelector(".message_form__input");
 const messageForm = document.querySelector(".message_form");
 const messageBox = document.querySelector(".messages__history");
+const fallback = document.querySelector(".fallback");
 
 const addNewMessage = ({ user, message }) => {
   const time = new Date();
@@ -106,7 +113,7 @@ const addNewMessage = ({ user, message }) => {
   const receivedMsg = `
   <div class="incoming__message">
     <div class="received__message">
-      <p>${message}</p>
+      <h5>${userName}</h5>
       <div class="message__info">
         <span class="message__author">${user}</span>
         <span class="time_date">${formattedTime}</span>
@@ -126,6 +133,7 @@ const addNewMessage = ({ user, message }) => {
 
   
   messageBox.innerHTML += user === userName ? myMsg : receivedMsg;
+  window.scrollTo(0, document.content.scrollHeight);
 };
 
 messageForm.addEventListener("submit", (e) => {
@@ -142,8 +150,25 @@ messageForm.addEventListener("submit", (e) => {
   inputField.value = "";
 });
 
+inputField.addEventListener("keyup", () => {
+  socket.emit("typing", {
+    isTyping: inputField.value.length > 0,
+    nick: userName,
+    });
+  });
+
 socket.on("chat message", function (data) {
   addNewMessage({ user: data.nick, message: data.message });
 });
 
+//
+socket.on("typing", function (data) {
+  const { isTyping, nick } = data;
 
+  if (!isTyping) {
+    fallback.innerHTML = "";
+    return;
+  }
+
+  fallback.innerHTML = `<p>${nick} is typing in the chat...</p>`;
+});
