@@ -19,8 +19,9 @@ and their elements. Using GIMP I created a banner for my home page which utilise
 seen throughout the web design as well as images which reflect topics which are covered in 
 the later sections of the home and about pages.  I wanted to use an icon library to make my 
 page design more interesting while providing a more intuitive navigation of the pages as a whole. 
-I opted for using FontAwsome as it provides a large variety of free to use icons which matched 
-the topics discussed in my web pages. I made the icons used in the headings hidden on screens 
+I opted for using FontAwsome ([2]Font Awesome 5, 2017) as it provides a large variety of free to 
+use icons which matched the topics discussed in my web pages. I made the icons used in the headings 
+hidden on screens 
 smaller than 767px to align with the responsiveness of my design and make the mobile layout 
 more simple and minimalistic. 
 
@@ -52,4 +53,6 @@ References:
 
 [1] Author: Mateusz Piguła. Node.js Socket.io tutorial: Real-time chat application | TSH.io. [online] 
 Available at: https://tsh.io/blog/socket-io-tutorial-real-time-communication/. (Accessed 30/11/2022)
+
+[2]Font Awesome 5 (2017). Font Awesome 5. [online] Fontawesome.com. Available at: https://fontawesome.com/.
 
